@@ -18,11 +18,27 @@ export class ClientEnvironmentVariables {
   }
 
   public static get NEXT_PUBLIC_SENTRY_DSN(): Result<string> {
-    const dsn = process.env.SENTRY_DSN;
+    const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN;
     if (!dsn) {
-      return [null, new Error("SENTRY_DSN is not defined")];
+      return [null, new Error("NEXT_PUBLIC_SENTRY_DSN is not defined")];
     }
     return [dsn, null];
+  }
+
+  public static get NEXT_PUBLIC_ENVIRONMENT(): Result<string> {
+    const env = process.env.NEXT_PUBLIC_ENVIRONMENT;
+    if (!env) {
+      return [null, new Error("NEXT_PUBLIC_ENVIRONMENT is not defined")];
+    }
+    return [env, null];
+  }
+
+  public static get NEXT_PUBLIC_APP_DOMAIN(): Result<string> {
+    const domain = process.env.NEXT_PUBLIC_APP_DOMAIN;
+    if (!domain) {
+      return [null, new Error("NEXT_PUBLIC_APP_DOMAIN is not defined")];
+    }
+    return [domain, null];
   }
 }
 

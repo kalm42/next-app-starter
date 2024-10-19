@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { CSPostHogProvider } from "./providers";
+import GlobalProviders from "@/components/GlobalProviders";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,9 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <CSPostHogProvider>
+      <GlobalProviders>
         <body className={"antialiased"}>{children}</body>
-      </CSPostHogProvider>
+      </GlobalProviders>
     </html>
   );
 }

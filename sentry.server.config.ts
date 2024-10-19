@@ -3,9 +3,9 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from "@sentry/nextjs";
-import { ClientEnvironmentVariables } from "./lib/env";
+import { ClientEnvironmentVariables as e } from "./lib/env";
 
-const [dsn, errorDsn] = ClientEnvironmentVariables.NEXT_PUBLIC_SENTRY_DSN;
+const [dsn, errorDsn] = e.NEXT_PUBLIC_SENTRY_DSN;
 if (errorDsn) throw errorDsn;
 
 Sentry.init({
