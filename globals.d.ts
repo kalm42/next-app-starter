@@ -13,5 +13,7 @@ namespace NodeJS {
     // Sentry
     NEXT_PUBLIC_SENTRY_DSN?: string;
     SENTRY_AUTH_TOKEN?: string;
+    NEXT_PUBLIC_SENTRY_ORG?: string;
+    NEXT_PUBLIC_PROJECT_ID?: string;
   }
 }

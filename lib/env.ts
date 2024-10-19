@@ -40,6 +40,22 @@ export class ClientEnvironmentVariables {
     }
     return [domain, null];
   }
+
+  public static get NEXT_PUBLIC_SENTRY_ORG(): Result<string> {
+    const org = process.env.NEXT_PUBLIC_SENTRY_ORG;
+    if (!org) {
+      return [null, new Error("NEXT_PUBLIC_SENTRY_ORG is not defined")];
+    }
+    return [org, null];
+  }
+
+  public static get NEXT_PUBLIC_PROJECT_ID(): Result<string> {
+    const id = process.env.NEXT_PUBLIC_PROJECT_ID;
+    if (!id) {
+      return [null, new Error("NEXT_PUBLIC_PROJECT_ID is not defined")];
+    }
+    return [id, null];
+  }
 }
 
 export class ServerEnvironmentVariables {

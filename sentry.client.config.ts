@@ -3,11 +3,18 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from "@sentry/nextjs";
-import { ClientEnvironmentVariables } from "./lib/env";
+import { ClientEnvironmentVariables as e } from "./lib/env";
 import createPostHogClient from "./lib/posthog";
 
-const [dsn, errorDsn] = ClientEnvironmentVariables.NEXT_PUBLIC_SENTRY_DSN;
+const [dsn, errorDsn] = e.NEXT_PUBLIC_SENTRY_DSN;
 if (errorDsn) throw errorDsn;
+
+const [org, errorOrg] = e.NEXT_PUBLIC_SENTRY_ORG;
+if (errorOrg) throw errorOrg;
+
+const [projectId, errorProjectId] = e.NEXT_PUBLIC_PROJECT_ID;
+if (errorProjectId) throw errorProjectId;
+
 const [posthog, errorPostHog] = createPostHogClient();
 if (errorPostHog) throw errorPostHog;
 
@@ -16,8 +23,8 @@ Sentry.init({
 
   integrations: [
     posthog.sentryIntegration({
-      organization: "kyle-h0",
-      projectId: 4508082604933120,
+      organization: org,
+      projectId: Number(projectId),
       severityAllowList: ["error", "info"], // optional: here is set to handle captureMessage (info) and captureException (error)
     }),
   ],
