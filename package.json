@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "vitest"
+    "test": "vitest",
+    "db:up": "docker-compose -f docker-compose.yaml up -d",
+    "db:down": "docker-compose -f docker-compose.yaml down --volumes --remove-orphans",
+    "db:reset": "docker-compose -f docker-compose.yml down --volumes --remove-orphans && docker-compose -f docker-compose.yml up -d"
   },
   "dependencies": {
     "@sentry/nextjs": "^8.34.0",
